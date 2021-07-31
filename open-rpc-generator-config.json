@@ -1,20 +1,20 @@
 {
     "openrpcDocument": "openrpc.json",
-    "outDir": "build",
+    "outDir": "./",
     "components": [
         {
             "type": "client",
-            "name": "avalanche",
+            "name": "avalanche-json-rpc",
             "language": "typescript"
         },
         {
             "type": "client",
-            "name": "avalanche",
+            "name": "avalanche-json-rpc",
             "language": "rust"
         },
         {
             "type": "docs",
-            "name": "avalanche",
+            "name": "avalanche-json-rpc-specification-website",
             "language": "gatsby"
         }
     ]

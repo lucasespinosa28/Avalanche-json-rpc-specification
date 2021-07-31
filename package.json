@@ -1,0 +1,29 @@
+{
+  "name": "avalanche-json-rpc-specification",
+  "version": "0.0.4",
+  "description": "Package containing tools to produce generated artifacts for the ethereum OpenRPC document. Please see the git repository for more information",
+  "scripts": {
+    "generate-clients": "open-rpc-generator generate -c open-rpc-generator-config.json",
+    "clean": "rm -rf build && mkdir -p build",
+    "build": "npm run clean && npm run generate-clients && npm run build:docs",
+    "publish": "npm run publish:typescript && npm run publish:rust",
+    "build:docs": "cd build/docs/gatsby && npm install && npm run build",
+    "publish:typescript": "cd build/client/typescript && npm install && npm run build && npm publish --access=public",
+    "publish:rust": "cd build/client/rust && cargo build && cargo package && cargo publish --token $CARGO_TOKEN"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasespinosa28/avalanche-json-rpc-specification.git"
+  },
+  "author": "Lucas espinosa",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lucasespinosa28/avalanche-json-rpc-specification/issues"
+  },
+  "homepage": "https://github.com/lucasespinosa28/avalanche-json-rpc-specification#readme",
+  "devDependencies": {
+    "@open-rpc/generator": "1.18.6",
+    "@open-rpc/meta-schema": "^1.13.20",
+    "@open-rpc/schema-utils-js": "^1.14.3"
+  }
+}

@@ -1,0 +1,2668 @@
+{
+  "openrpc": "1.2.4",
+  "info": {
+    "version": "1.0.30",
+    "title": "Avalanche JSON-RPC",
+    "description": "This API lets you interact with an Avalanche client via JSON-RPC",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "name": "Mainnet",
+      "url": "https://api.avax.network/ext/bc/C/rpc",
+      "summary": "for methods,eth,avax,net,personal,txpool and web3"
+    },
+    {
+      "name": "Mainnet",
+      "url": "https://api.avax.network/ext/info",
+      "summary": "for methods info"
+    },
+    {
+      "name": "Mainnet",
+      "url": "https://api.avax.network/ext/P",
+      "summary": "for methods platform"
+    },
+    {
+      "name": "Mainnet",
+      "url": "https://api.avax.network/ext/bc/X",
+      "summary": "for methods avm"
+    },
+    {
+      "name": "Testnet",
+      "url": "https://api.avax-test.network/ext/bc/C/rpc",
+      "summary": "for methods,eth,avax,net,personal,txpool and web3"
+    }
+  ],
+  "methods": [
+    {
+      "name": "avm.issueTx",
+      "summary": "Send a signed transaction to the network. encoding specifies the format of the signed transaction. Can be either \"cb58\" or \"hex\". Defaults to \"cb58\".",
+      "params": [
+        {
+          "name": "tx",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "issueTxResult",
+        "schema": {
+          "$ref": "#/components/schemas/TxID"
+        }
+      }
+    },
+    {
+      "name": "avm.getAllBalances",
+      "summary": "Get the balances of all assets controlled by a given address.",
+      "params": [
+        {
+          "name": "Address",
+          "required": true,
+          "description": "X-chain address",
+          "schema": {
+            "$ref": "#/components/schemas/XAddress"
+          }
+        }
+      ],
+      "result": {
+        "name": "getAllBalancesResult",
+        "schema": {
+          "title":"balances",
+          "type": "object",
+          "properties": {
+            "asset":{
+              "type":"string"
+            },
+            "balance":{
+              "type":"number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "avm.getAllBalances",
+      "summary": "Get the balances of all assets controlled by a given address.",
+      "params": [
+        {
+          "name": "Address",
+          "required": true,
+          "description": "X-chain address",
+          "schema": {
+            "$ref": "#/components/schemas/XAddress"
+          }
+        }
+      ],
+      "result": {
+        "name": "getAllBalancesResult",
+        "schema": {
+          "title":"balances",
+          "type": "object",
+          "properties": {
+            "asset":{
+              "type":"string"
+            },
+            "balance":{
+              "type":"number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "avm.getAllBalances",
+      "summary": "Get the balances of all assets controlled by a given address.",
+      "params": [
+        {
+          "name": "Address",
+          "required": true,
+          "description": "X-chain address",
+          "schema": {
+            "$ref": "#/components/schemas/XAddress"
+          }
+        }
+      ],
+      "result": {
+        "name": "getAllBalancesResult",
+        "schema": {
+          "title":"balances",
+          "type": "object",
+          "properties": {
+            "asset":{
+              "type":"string"
+            },
+            "balance":{
+              "type":"number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "avm.getAssetDescription",
+      "summary": "Get information about an asset.",
+      "params": [
+        {
+          "name": "assetID",
+          "required": true,
+          "description": "is the id of the asset for which the information is requested.",
+          "schema": {
+            "type":"string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getAssetDescriptionResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "assetID":{
+              "type":"string"
+            },
+            "name":{
+              "type":"string"
+            },
+            "symbol":{
+              "type":"string"
+            },
+            "denomination":{
+              "type":"number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "avm.getBalance",
+      "summary": "Get information about an asset.",
+      "params": [
+        {
+          "name": "Address",
+          "required": true,
+          "description": "owner of the asset",
+          "schema": {
+            "$ref": "#/components/schemas/XAddress"
+          }
+        },
+        {
+          "name": "assetID",
+          "required": true,
+          "description": "id of the asset for which the balance is requested.",
+          "schema": {
+            "type":"string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBalanceResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "balance":{
+              "type":"number"
+            },
+            "utxoIDs":{
+              "type":"array",
+              "items":{
+                "type":"object",
+                "properties":{
+                  "txID":{
+                    "type":"string"
+                  },
+                  "outputIndex":{
+                    "type":"number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "avm.getTx",
+      "summary": "Returns the specified transaction. The encoding parameter sets the format of the returned transaction. Can be either \"cb58\" or \"hex\". Defaults to \"cb58\".",
+      "params": [
+        {
+          "name": "txID",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/TxID"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "getTxResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "tx": {
+              "type": "string"
+            },
+            "encoding": {
+              "$ref": "#/components/schemas/Encoding"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "avm.getTxStatus",
+      "summary": "Gets a transaction’s status by its ID. If the transaction was dropped, response will include a reason field with more information why the transaction was dropped.",
+      "params": [
+        {
+          "name": "txID",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/TxID"
+          }
+        }
+      ],
+      "result": {
+        "name": "getTxStatusResult",
+        "description": "status is one of:\n Validating: The blockchain is being validated by this node.\n Created: The blockchain exists but isn’t being validated by this node.\n Preferred: The blockchain was proposed to be created and is likely to be created but the transaction isn’t yet accepted.\n Unknown: The blockchain either wasn’t proposed or the proposal to create it isn’t preferred. The proposal may be resubmitted.",
+        "schema": {
+          "title": "status",
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "avm.getUTXOs",
+      "summary": "Gets the UTXOs that reference a given address. If sourceChain is specified, then it will retrieve the atomic UTXOs exported from that chain to the X Chain.",
+      "params": [
+        {
+          "name": "addresses",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/XAddresses"
+          }
+        },
+        {
+          "name": "limit",
+          "description": "If startIndex is omitted, will fetch all UTXOs up to limit.",
+          "schema": {
+            "type": "number"
+          }
+        },
+        {
+          "name":"startIndex",
+          "schema": {
+            "type": "object",
+            "properties":{
+              "address":{
+                "type":"string"
+              },
+              "utxo":{
+                "type":"string"
+              }
+            }
+          }
+        },
+        {
+          "name": "sourceChain",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "getUTXOsResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "numFetched":{
+              "type":"number"
+            },
+            "utxos":{
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "endIndex":{
+              "type": "object",
+              "properties": {
+                "address":{
+                  "$ref": "#/components/schemas/XAddress"
+                },
+                "utxo":{
+                  "type":"string"
+                }
+              }
+            },
+            "encoding":{
+              "$ref": "#/components/schemas/Encoding"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getBalance",
+      "summary": "Get the balance of AVAX controlled by a given address.",
+      "params": [
+        {
+          "name": "Address",
+          "required": true,
+          "description": "P-chain address",
+          "schema": {
+            "$ref": "#/components/schemas/PAddress"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBalanceResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "balance": {
+              "description": "is the total balance, in nAVAX.",
+              "type": "number"
+            },
+            "unlocked": {
+              "description": "is the unlocked balance, in nAVAX.",
+              "type": "number"
+            },
+            "lockedStakeable": {
+              "description": "is the locked stakeable balance, in nAVAX.",
+              "type": "number"
+            },
+            "lockedNotStakeable": {
+              "description": "is the locked and not stakeable balance, in nAVAX.",
+              "type": "number"
+            },
+            "utxoIDs": {
+              "description": " are the IDs of the UTXOs that reference address.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "txID": {
+                    "$ref": "#/components/schemas/TxID"
+                  },
+                  "outputIndex": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getBlockchains",
+      "summary": "Get all the blockchains that exist (excluding the P-Chain).",
+      "params": [],
+      "result": {
+        "name": "getBlockchainsResult",
+        "schema": {
+          "title": "blockchains",
+          "description": " is all of the blockchains that exists on the Avalanche network.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "is the blockchain’s ID.",
+                "type": "string"
+              },
+              "name": {
+                "description": "is the human-readable name of this blockchain.",
+                "type": "string"
+              },
+              "subnetID": {
+                "description": "is the ID of the Subnet that validates this blockchain.",
+                "type": "string"
+              },
+              "vmID": {
+                "description": "is the ID of the Virtual Machine the blockchain runs.",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getBlockchainStatus",
+      "summary": "Get the status of a blockchain.",
+      "params": [
+        {
+          "name": "blockchainID",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBlockchainStatusResult",
+        "description": "status is one of:\n Validating: The blockchain is being validated by this node.\n Created: The blockchain exists but isn’t being validated by this node.\n Preferred: The blockchain was proposed to be created and is likely to be created but the transaction isn’t yet accepted.\n Unknown: The blockchain either wasn’t proposed or the proposal to create it isn’t preferred. The proposal may be resubmitted.",
+        "schema": {
+          "title": "status",
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "platform.getCurrentSupply",
+      "summary": "Returns an upper bound on the number of AVAX that exist. This is an upper bound because it does not account for burnt tokens, including transaction fees.",
+      "params": [],
+      "result": {
+        "name": "getCurrentSupplyResult",
+        "description": "is an upper bound on the number of AVAX that exist, denominated in nAVAX.",
+        "schema": {
+          "title": "supply",
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "platform.getCurrentValidators",
+      "summary": "List the current validators of the given Subnet.",
+      "params": [
+        {
+          "name": "subnetID",
+          "description": "is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "nodeIDs",
+          "description": "is a list of the nodeIDs of current validators to request. If omitted, all current validators are returned. If a specified nodeID is not in the set of current validators, it will not be included in the response.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getCurrentValidatorsResult",
+        "schema": {
+          "title": "validators",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "txID": {
+                "description": "is the validator transaction.",
+                "$ref": "#/components/schemas/TxID"
+              },
+              "startTime": {
+                "description": " s the Unix time when the validator starts validating the Subnet.",
+                "type": "number"
+              },
+              "endTime": {
+                "description": "is the Unix time when the validator stops validating the Subnet.",
+                "type": "number"
+              },
+              "stakeAmount": {
+                "description": "is the amount of nAVAX this validator staked. Omitted if subnetID is not the Primary Network",
+                "type": "number"
+              },
+              "nodeID": {
+                "type": "string"
+              },
+              "rewardOwner": {
+                "type": "object",
+                "properties": {
+                  "locktime": {
+                    "type": "number"
+                  },
+                  "threshold": {
+                    "type": "number"
+                  },
+                  "addresses": {
+                    "$ref": "#/components/schemas/PAddresses"
+                  }
+                }
+              },
+              "potentialReward": {
+                "type": "number"
+              },
+              "delegationFee": {
+                "type": "number"
+              },
+              "uptime": {
+                "type": "number"
+              },
+              "connected": {
+                "type": "boolean"
+              },
+              "delegators": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "txID": {
+                      "description": "is the validator transaction.",
+                      "$ref": "#/components/schemas/TxID"
+                    },
+                    "startTime": {
+                      "$ref": "#/components/schemas/StartTime"
+                    },
+                    "endTime": {
+                      "$ref": "#/components/schemas/EndTime"
+                    },
+                    "stakeAmount": {
+                      "$ref": "#/components/schemas/StakeAmount"
+                    },
+                    "nodeID": {
+                      "$ref": "#/components/schemas/NodeID"
+                    },
+                    "rewardOwner": {
+                      "type": "object",
+                      "properties": {
+                        "locktime": {
+                          "type": "number"
+                        },
+                        "threshold": {
+                          "type": "number"
+                        },
+                        "addresses": {
+                          "$ref": "#/components/schemas/PAddresses"
+                        }
+                      }
+                    },
+                    "potentialReward": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getHeight",
+      "summary": "Returns the height of the last accepted block.",
+      "params": [],
+      "result": {
+        "name": "getHeightResult",
+        "schema": {
+          "title": "height",
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "platform.getMinStake",
+      "summary": "Get the minimum amount of AVAX required to validate the Primary Network and the minimum amount of AVAX that can be delegated.",
+      "params": [],
+      "result": {
+        "name": "getMinStakeResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "minValidatorStake": {
+              "type": "number"
+            },
+            "minDelegatorStake": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getPendingValidators",
+      "summary": "List the validators in the pending validator set of the specified Subnet. Each validator is not currently validating the Subnet but will in the future.",
+      "params": [
+        {
+          "name": "subnetID",
+          "description": "is the subnet whose current validators are returned. If omitted, returns the current validators of the Primary Network.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "nodeIDs",
+          "description": "is a list of the nodeIDs of current validators to request. If omitted, all current validators are returned. If a specified nodeID is not in the set of current validators, it will not be included in the response.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getPendingValidatorsResult",
+        "schema": {
+          "title": "validators",
+          "type": "object",
+          "properties": {
+            "validators": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "txID": {
+                    "description": "is the validator transaction.",
+                    "$ref": "#/components/schemas/TxID"
+                  },
+                  "startTime": {
+                    "$ref": "#/components/schemas/StartTime"
+                  },
+                  "endTime": {
+                    "$ref": "#/components/schemas/EndTime"
+                  },
+                  "stakeAmount": {
+                    "$ref": "#/components/schemas/StakeAmount"
+                  },
+                  "nodeID": {
+                    "$ref": "#/components/schemas/NodeID"
+                  },
+                  "delegationFee": {
+                    "type": "number"
+                  },
+                  "connected": {
+                    "description": "if the node is connected.",
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          },
+          "delegators": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "txID": {
+                  "description": "is the validator transaction.",
+                  "$ref": "#/components/schemas/TxID"
+                },
+                "startTime": {
+                  "$ref": "#/components/schemas/StartTime"
+                },
+                "endTime": {
+                  "$ref": "#/components/schemas/EndTime"
+                },
+                "stakeAmount": {
+                  "$ref": "#/components/schemas/StakeAmount"
+                },
+                "nodeID": {
+                  "$ref": "#/components/schemas/NodeID"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getRewardUTXOs",
+      "summary": "Returns the UTXOs that were rewarded after the provided transaction's staking or delegation period ended.",
+      "params": [
+        {
+          "name": "txID",
+          "required": true,
+          "description": "is the ID of the staking or delegating transaction.",
+          "schema": {
+            "$ref": "#/components/schemas/TxID"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "getRewardUTXOsResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "numFetched": {
+              "type": "number"
+            },
+            "utxos": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getStakingAssetID",
+      "summary": "Retrieve an assetID for a subnet’s staking asset. Currently, this only returns the Primary Network’s staking assetID.",
+      "params": [
+        {
+          "name": "subnetID",
+          "description": " is the subnet whose assetID is requested.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "assetID",
+          "required": true,
+          "description": " is the assetID for a subnet’s staking asset.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getStakingAssetIDResult",
+        "schema": {
+          "title":"assetID",
+          "type": "object",
+          "properties": {
+            "numFetched": {
+              "type": "number"
+            },
+            "utxos": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getSubnets",
+      "summary": "Get info about the Subnets.",
+      "params": [
+        {
+          "name": "ids",
+          "description": " is the subnet whose assetID is requested.",
+          "required": true, 
+          "schema": {
+            "title":"ids",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "result": {
+        "name": "getSubnetsResult",
+        "schema": {
+          "title":"subnets",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "controlKeys": {
+              "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "threshold": {
+              "type": "number"
+            }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getStake",
+      "summary": "Get the amount of nAVAX staked by a set of addresses. The amount returned does not include staking rewards.",
+      "params": [
+        {
+          "name": "addresses",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/PAddresses"
+          }
+        }
+      ],
+      "result": {
+        "name": "getStakeResult",
+        "schema": {
+          "title":"staked",
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "platform.getTotalStake",
+      "summary": "Get the total amount of nAVAX staked on the Primary Network.",
+      "params": [],
+      "result": {
+        "name": "getTotalStakeResult",
+        "schema": {
+          "title":"stake",
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "platform.getTx",
+      "summary": "Gets a transaction by its ID.",
+      "params": [
+        {
+          "name": "txID",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/TxID"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "getTxResult",
+        "schema": {
+          "title":"subnets",
+          "type": "object",
+          "properties": {
+            "tx": {
+              "type": "string"
+            },
+            "encoding": {
+              "$ref": "#/components/schemas/Encoding"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.getTxStatus",
+      "summary": "Gets a transaction’s status by its ID. If the transaction was dropped, response will include a reason field with more information why the transaction was dropped.",
+      "params": [
+        {
+          "name": "txID",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/TxID"
+          }
+        }
+      ],
+      "result": {
+        "name": "getTxStatusResult",
+        "description": "status is one of:\n Validating: The blockchain is being validated by this node.\n Created: The blockchain exists but isn’t being validated by this node.\n Preferred: The blockchain was proposed to be created and is likely to be created but the transaction isn’t yet accepted.\n Unknown: The blockchain either wasn’t proposed or the proposal to create it isn’t preferred. The proposal may be resubmitted.",
+        "schema": {
+          "title": "status",
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "platform.getUTXOs",
+      "summary": "Gets the UTXOs that reference a given set of addresses.",
+      "params": [
+        {
+          "name": "addresses",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/PAddresses"
+          }
+        },
+        {
+          "name": "limit",
+          "description": "If startIndex is omitted, will fetch all UTXOs up to limit.",
+          "schema": {
+            "type": "number"
+          }
+        },
+        {
+          "name":"startIndex",
+          "schema": {
+            "type": "object",
+            "properties":{
+              "address":{
+                "type":"string"
+              },
+              "utxo":{
+                "type":"string"
+              }
+            }
+          }
+        },
+        {
+          "name": "sourceChain",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "getUTXOsResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "numFetched":{
+              "type":"number"
+            },
+            "utxos":{
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "endIndex":{
+              "type": "object",
+              "properties": {
+                "address":{
+                  "$ref": "#/components/schemas/PAddress"
+                },
+                "utxo":{
+                  "type":"string"
+                }
+              }
+            },
+            "encoding":{
+              "$ref": "#/components/schemas/Encoding"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.importAVAX",
+      "summary": "Gets a transaction’s status by its ID. If the transaction was dropped, response will include a reason field with more information why the transaction was dropped.",
+      "params": [
+        {
+          "name": "from",
+          "description":"from are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.",
+          "schema": {
+            "$ref": "#/components/schemas/PAddresses"
+          }
+        },
+        {
+          "name": "to",
+          "description":"to is the ID of the address the AVAX is imported to. This must be the same as the to argument in the corresponding call to the X-Chain’s exportAVAX.",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/PAddress"
+          }
+        },
+        {
+          "name": "changeAddr",
+          "description":"changeAddr is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.",
+          "schema": {
+            "$ref": "#/components/schemas/PAddress"
+          }
+        },
+        {
+          "name": "sourceChain",
+          "description":"sourceChain is the ID or alias of the chain the AVAX is being imported from. To import funds from the X-Chain, use \"X\".",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "username",
+          "description":"username is the user that controls the address specified in to.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "password",
+          "description":"password is username‘s password.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "importAVAXResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "txID": {
+              "type": "string"
+            },
+            "changeAddr": {
+              "schema": {
+                "$ref": "#/components/schemas/PAddress"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.issueTx",
+      "summary": "Issue a transaction to the Platform Chain.",
+      "params": [
+        {
+          "name": "tx",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "issueTxResult",
+        "schema": {
+          "$ref": "#/components/schemas/TxID"
+        }
+      }
+    },
+    {
+      "name": "platform.issueTx",
+      "summary": "Issue a transaction to the Platform Chain.",
+      "params": [
+        {
+          "name": "tx",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "issueTxResult",
+        "schema": {
+          "$ref": "#/components/schemas/TxID"
+        }
+      }
+    },
+    {
+      "name": "platform.sampleValidators",
+      "summary": "Sample validators from the specified Subnet.",
+      "params": [
+        {
+          "name": "size",
+          "description": "is the number of validators to sample.",
+          "required": true,
+          "schema": {
+            "type": "number"
+          }
+        },
+        {
+          "name": "subnetID",
+          "description": " is the Subnet to sampled from. If omitted, defaults to the Primary Network.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "issueTxResult",
+        "description":"Each element of validators is the ID of a validator.",
+        "schema": {
+          "type":"array",
+          "items":{
+            "type":"string"
+          }
+        }
+      }
+    },
+    {
+      "name": "platform.validatedBy",
+      "summary": "Get the Subnet that validates a given blockchain.",
+      "params": [
+        {
+          "name": "blockchainID",
+          "description": "is the blockchain’s ID.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "validatedByResult",
+        "description":"is the ID of the Subnet that validates the blockchain.",
+        "schema": {
+          "title":"subnetID",
+          "type":"string"
+        }
+      }
+    },
+    {
+      "name": "platform.validates",
+      "summary": "Get the IDs of the blockchains a Subnet validates.",
+      "params": [
+        {
+          "name": "subnetID",
+          "description": "subnetID is the Subnet’s ID.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "validatesResult",
+        "description":"Each element of blockchainIDs is the ID of a blockchain the Subnet validates.",
+        "schema": {
+          "title":"blockchainIDs",
+          "type":"array",
+          "items":{
+            "type":"string"
+          }
+        }
+      }
+    },
+    {
+      "name": "info.getBlockchainID",
+      "summary": "Given a blockchain’s alias, get its ID.",
+      "params": [
+        {
+          "name": "alias",
+          "required": true,
+          "description": "alias X,P or C",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBlockchainIDResult",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "avm.buildGenesis",
+      "summary": "Given a JSON representation of this Virtual Machine’s genesis state, create the byte representation of that state.",
+      "params": [
+        {
+          "name": "alias",
+          "required": true,
+          "description": "alias X,P or C",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBlockchainIDResult",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "info.getBlockchainID",
+      "summary": "Given a blockchain’s alias, get its ID.",
+      "params": [
+        {
+          "name": "alias",
+          "required": true,
+          "description": "alias X,P or C",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBlockchainIDResult",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "info.getNetworkID",
+      "summary": "Get the ID of the network this node is participating in.",
+      "params": [],
+      "result": {
+        "name": "getNetworkIDResult",
+        "schema": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "name": "info.getNetworkName",
+      "summary": "Get the name of the network this node is participating in.",
+      "params": [],
+      "result": {
+        "name": "getNetworkNameResult",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "info.getNodeVersion",
+      "summary": "Get the version of this node.",
+      "params": [],
+      "result": {
+        "name": "getNodeVersionResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "description": "is this node's version",
+              "type": "string"
+            },
+            "databaseVersion": {
+              "description": "is the version of the database this node is using",
+              "type": "string"
+            },
+            "gitCommit": {
+              "description": "is the Git commit that this node was built from",
+              "type": "string"
+            },
+            "vmVersions": {
+              "description": "is map where each key/value pair is the name of a VM, and the version of that VM this node runs",
+              "type": "object",
+              "properties": {
+                "avm": {
+                  "type": "string"
+                },
+                "evm": {
+                  "type": "string"
+                },
+                "platform": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "info.isBootstrapped",
+      "summary": "Check whether a given chain is done bootstrapping",
+      "params": [
+        {
+          "name": "chain",
+          "required": true,
+          "description": "chain X, P or C",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "isBootstrappedResult",
+        "schema": {
+          "tile": "isBootstrapped",
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "name": "info.peers",
+      "summary": "Get a description of peer connections.",
+      "params": [
+        {
+          "name": "nodeIDs",
+          "description": "is an optional parameter to specify what nodeID's descriptions should be returned. If this parameter is left empty, descriptions for all active connections will be returned. If the node is not connected to a specified nodeID, it will be omitted from the response.",
+          "schema": {
+            "tile": "nodeIDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "result": {
+        "name": "peersResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "numPeers": {
+              "type": "number"
+            },
+            "peers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ip": {
+                    "type": "string"
+                  },
+                  "publicIP": {
+                    "type": "string"
+                  },
+                  "nodeID": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "lastSent": {
+                    "type": "string"
+                  },
+                  "lastReceived": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "info.getTxFee",
+      "summary": "Get the fees of the network.",
+      "params": [],
+      "result": {
+        "name": "getTxFeeResult",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "creationTxFee": {
+              "type": "number"
+            },
+            "txFee": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "eth_blockNumber",
+      "summary": "Returns the number of most recent block.",
+      "params": [],
+      "result": {
+        "$ref": "#/components/contentDescriptors/BlockNumber"
+      }
+    },
+    {
+      "name": "eth_call",
+      "summary": "Executes a new message call (locally) immediately without creating a transaction on the block chain.",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/Transaction"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/BlockNumber"
+        }
+      ],
+      "result": {
+        "name": "returnValue",
+        "description": "The return value of the executed contract",
+        "schema": {
+          "$ref": "#/components/schemas/Bytes"
+        }
+      }
+    },
+    {
+      "name": "eth_chainId",
+      "summary": "Returns the currently configured chain id",
+      "description": "Returns the currently configured chain id, a value used in replay-protected transaction signing as introduced by [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md).",
+      "params": [],
+      "result": {
+        "name": "chainId",
+        "description": "hex format integer of the current chain id. Defaults are ETC=61, ETH=1, Morden=62.",
+        "schema": {
+          "title": "chainId",
+          "type": "string",
+          "pattern": "^0x[a-fA-F\\d]+$"
+        }
+      }
+    },
+    {
+      "name": "eth_getAssetBalance",
+      "summary": "Returns balance of first class Avalanche Native Tokens on the C-Chain",
+      "params": [
+        {
+          "name": "address",
+          "required": true,
+          "description": "owner of the asset",
+          "schema": {
+            "$ref": "#/components/schemas/Address"
+          }
+        },
+        {
+          "name": "blockNumber",
+          "required": true,
+          "description": "the block number or hash at which to retrieve the balance",
+          "schema": {
+            "$ref": "#/components/schemas/BlockNumber"
+          }
+        },
+        {
+          "name": "assetID",
+          "required": true,
+          "description": "id of the asset for which the balance is requested",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "result": {
+        "name": "getAssetBalanceResult",
+        "schema": {
+          "$ref": "#/components/schemas/IntegerOrNull"
+        }
+      }
+    },
+    {
+      "name": "eth_getBalance",
+      "summary": "Returns AVAX balance of a given or account or contract",
+      "params": [
+        {
+          "name": "address",
+          "required": true,
+          "description": "The address of the account or contract",
+          "schema": {
+            "$ref": "#/components/schemas/Address"
+          }
+        },
+        {
+          "name": "blockNumber",
+          "description": "A BlockNumber at which to request the balance",
+          "schema": {
+            "$ref": "#/components/schemas/BlockNumber"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBalanceResult",
+        "schema": {
+          "$ref": "#/components/schemas/IntegerOrNull"
+        }
+      }
+    },
+    {
+      "name": "eth_signTransaction",
+      "summary": "Signs a transaction that can be submitted to the network at a later time using with eth_sendRawTransaction.",
+      "params": [
+        {
+          "name": "Transaction",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/SignTransaction"
+          }
+        }
+      ],
+      "result": {
+        "name": "Encoded transaction",
+        "schema": {
+          "$ref": "#/components/schemas/Bytes"
+        }
+      }
+    },
+    {
+      "name": "eth_getTransactionCount",
+      "summary": "Returns the number of transactions sent from an address",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/Address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/BlockNumber"
+        }
+      ],
+      "result": {
+        "name": "transactionCount",
+        "schema": {
+          "title": "nonceOrNull",
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/Nonce"
+            },
+            {
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "eth_sendRawTransaction",
+      "summary": "Creates new message call transaction or a contract creation for signed transactions.",
+      "params": [
+        {
+          "name": "signedTransactionData",
+          "required": true,
+          "description": "The signed transaction data",
+          "schema": {
+            "$ref": "#/components/schemas/Bytes"
+          }
+        }
+      ],
+      "result": {
+        "name": "transactionHash",
+        "description": "The transaction hash, or the zero hash if the transaction is not yet available.",
+        "schema": {
+          "$ref": "#/components/schemas/Keccak"
+        }
+      }
+    },
+    {
+      "name": "eth_getBlockByHash",
+      "summary": "Gets a block for a given hash",
+      "params": [
+        {
+          "name": "blockHash",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/BlockHash"
+          }
+        },
+        {
+          "name": "includeTransactions",
+          "description": "If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.",
+          "required": true,
+          "schema": {
+            "title": "isTransactionsIncluded",
+            "type": "boolean"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBlockByHashResult",
+        "schema": {
+          "$ref": "#/components/schemas/BlockOrNull"
+        }
+      }
+    },
+    {
+      "name": "eth_getBlockByNumber",
+      "summary": "Gets a block for a given number",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/BlockNumber"
+        },
+        {
+          "name": "includeTransactions",
+          "description": "If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.",
+          "required": true,
+          "schema": {
+            "title": "isTransactionsIncluded",
+            "type": "boolean"
+          }
+        }
+      ],
+      "result": {
+        "name": "getBlockByNumberResult",
+        "schema": {
+          "$ref": "#/components/schemas/BlockOrNull"
+        }
+      }
+    },
+    {
+      "name": "eth_getTransactionByHash",
+      "summary": "Returns the information about a transaction requested by transaction hash.",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/TransactionHash"
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/TransactionResult"
+      }
+    },
+    {
+      "name": "eth_getTransactionReceipt",
+      "summary": "Returns the receipt information of a transaction by its hash.",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/TransactionHash"
+        }
+      ],
+      "result": {
+        "name": "transactionReceiptResult",
+        "description": "returns either a receipt or null",
+        "schema": {
+          "title": "transactionReceiptOrNull",
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/Receipt"
+            },
+            {
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "avax.getAtomicTxStatus",
+      "summary": "*use ext/bc/C/avax* Get the status of an atomic transaction sent to the network.",
+      "params": [
+        {
+          "name": "txID",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/TxID"
+          }
+        }
+      ],
+      "result": {
+        "name": "AtomicTxStatusResult",
+        "schema": {
+          "title": "AtomicTxStatusStatus",
+          "oneOf": [
+            {
+              "name": "status",
+              "schema": {
+                "title": "status",
+                "type": "string"
+              }
+            },
+            {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  },
+                  "blockHeight": {
+                    "schema": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "avax.getUTXOs",
+      "summary": "*use ext/bc/C/avax* Gets the UTXOs that reference a given address.",
+      "params": [
+        {
+          "name": "addresses",
+          "description": "is a list of UTXOs such that each UTXO references at least one address in addresses.",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "name": "limit",
+          "description": "At most limit UTXOs are returned. If limit is omitted or greater than 1024, it is set to 1024.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "sourceChain",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "startIndex",
+          "description": "If startIndex is omitted, will fetch all UTXOs up to limit",
+          "schema": {
+            "title": "startIndex",
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "string"
+              },
+              "utxo": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "getUTXOsResult",
+        "schema": {
+          "type": "object"
+        }
+      }
+    },
+    {
+      "name": "avax.issueTx",
+      "summary": "Give a user control over an address by providing the private key that controls the address.",
+      "params": [
+        {
+          "name": "tx",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/schemas/Encoding"
+        }
+      ],
+      "result": {
+        "name": "issueTxResult",
+        "schema": {
+          "$ref": "#/components/schemas/TxID"
+        }
+      }
+    },
+    {
+      "name": "net_version",
+      "summary": "Network identifier associated with network",
+      "description": "Returns the network ID associated with the current network.",
+      "params": [],
+      "result": {
+        "name": "networkId",
+        "description": "Network ID associated with the current network",
+        "schema": {
+          "title": "networkId",
+          "type": "string",
+          "pattern": "^[\\d]+$"
+        }
+      }
+    },
+    {
+      "name": "web3_clientVersion",
+      "description": "Returns the version of the current client",
+      "summary": "current client version",
+      "params": [],
+      "result": {
+        "name": "clientVersion",
+        "description": "client version",
+        "schema": {
+          "title": "clientVersion",
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "web3_sha3",
+      "summary": "Hashes data",
+      "description": "Hashes data using the Keccak-256 algorithm",
+      "params": [
+        {
+          "name": "data",
+          "description": "data to hash using the Keccak-256 algorithm",
+          "summary": "data to hash",
+          "schema": {
+            "title": "data",
+            "type": "string",
+            "pattern": "^0x[a-fA-F\\d]+$"
+          }
+        }
+      ],
+      "result": {
+        "name": "hashedData",
+        "description": "Keccak-256 hash of the given data",
+        "schema": {
+          "$ref": "#/components/schemas/Keccak"
+        }
+      },
+      "examples": [
+        {
+          "name": "sha3Example",
+          "params": [
+            {
+              "name": "sha3ParamExample",
+              "value": "0x68656c6c6f20776f726c64"
+            }
+          ],
+          "result": {
+            "name": "sha3ResultExample",
+            "value": "0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad"
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Bytes65": {
+        "title": "65 hex encoded bytes",
+        "type": "string",
+        "pattern": "^0x[0-9a-f]{512}$"
+      },
+      "ProofNode": {
+        "title": "proofNode",
+        "description": "An individual node used to prove a path down a merkle-patricia-tree",
+        "$ref": "#/components/schemas/Bytes"
+      },
+      "StorageProofKey": {
+        "title": "storageProofKey",
+        "description": "The key used to get the storage slot in its account tree.",
+        "$ref": "#/components/schemas/Integer"
+      },
+      "StorageProof": {
+        "title": "storageProofSet",
+        "type": "array",
+        "description": "Current block header PoW hash.",
+        "items": {
+          "title": "storageProof",
+          "type": "object",
+          "description": "Object proving a relationship of a storage value to an account's storageHash.",
+          "properties": {
+            "key": {
+              "$ref": "#/components/schemas/StorageProofKey"
+            },
+            "value": {
+              "title": "storageProofValue",
+              "description": "The value of the storage slot in its account tree",
+              "$ref": "#/components/schemas/Integer"
+            },
+            "proof": {
+              "$ref": "#/components/schemas/ProofNodes"
+            }
+          }
+        }
+      },
+      "ProofNodes": {
+        "title": "proofNodes",
+        "type": "array",
+        "description": "The set of node values needed to traverse a patricia merkle tree (from root to leaf) to retrieve a value",
+        "items": {
+          "$ref": "#/components/schemas/ProofNode"
+        }
+      },
+      "PowHash": {
+        "title": "powHash",
+        "description": "Current block header PoW hash.",
+        "$ref": "#/components/schemas/DataWord"
+      },
+      "SeedHash": {
+        "title": "seedHash",
+        "description": "The seed hash used for the DAG.",
+        "$ref": "#/components/schemas/DataWord"
+      },
+      "MixHash": {
+        "title": "mixHash",
+        "description": "The mix digest.",
+        "$ref": "#/components/schemas/DataWord"
+      },
+      "Difficulty": {
+        "title": "difficulty",
+        "description": "The boundary condition ('target'), 2^256 / difficulty.",
+        "$ref": "#/components/schemas/DataWord"
+      },
+      "FilterId": {
+        "title": "filterId",
+        "type": "string",
+        "description": "An identifier used to reference the filter."
+      },
+      "BlockHash": {
+        "title": "blockHash",
+        "type": "string",
+        "pattern": "^0x[a-fA-F\\d]{64}$",
+        "description": "The hex representation of the Keccak 256 of the RLP encoded block"
+      },
+      "BlockNumber": {
+        "title": "blockNumber",
+        "type": "string",
+        "description": "The hex representation of the block's height",
+        "$ref": "#/components/schemas/Integer"
+      },
+      "BlockNumberTag": {
+        "title": "blockNumberTag",
+        "type": "string",
+        "description": "The optional block height description",
+        "enum": [
+          "earliest",
+          "latest",
+          "pending"
+        ]
+      },
+      "BlockOrNull": {
+        "title": "blockOrNull",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Block"
+          },
+          {
+            "$ref": "#/components/schemas/Null"
+          }
+        ]
+      },
+      "IntegerOrNull": {
+        "title": "integerOrNull",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Integer"
+          },
+          {
+            "$ref": "#/components/schemas/Null"
+          }
+        ]
+      },
+      "AddressOrNull": {
+        "title": "addressOrNull",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Address"
+          },
+          {
+            "$ref": "#/components/schemas/Null"
+          }
+        ]
+      },
+      "Receipt": {
+        "title": "receipt",
+        "type": "object",
+        "description": "The receipt of a transaction",
+        "required": [
+          "blockHash",
+          "blockNumber",
+          "contractAddress",
+          "cumulativeGasUsed",
+          "from",
+          "gasUsed",
+          "logs",
+          "logsBloom",
+          "to",
+          "transactionHash",
+          "transactionIndex"
+        ],
+        "properties": {
+          "blockHash": {
+            "$ref": "#/components/schemas/BlockHash"
+          },
+          "blockNumber": {
+            "$ref": "#/components/schemas/BlockNumber"
+          },
+          "contractAddress": {
+            "title": "ReceiptContractAddress",
+            "description": "The contract address created, if the transaction was a contract creation, otherwise null",
+            "$ref": "#/components/schemas/AddressOrNull"
+          },
+          "cumulativeGasUsed": {
+            "title": "ReceiptCumulativeGasUsed",
+            "description": "The gas units used by the transaction",
+            "$ref": "#/components/schemas/Integer"
+          },
+          "from": {
+            "$ref": "#/components/schemas/From"
+          },
+          "gasUsed": {
+            "title": "ReceiptGasUsed",
+            "description": "The total gas used by the transaction",
+            "$ref": "#/components/schemas/Integer"
+          },
+          "logs": {
+            "title": "logs",
+            "type": "array",
+            "description": "An array of all the logs triggered during the transaction",
+            "items": {
+              "$ref": "#/components/schemas/Log"
+            }
+          },
+          "logsBloom": {
+            "$ref": "#/components/schemas/BloomFilter"
+          },
+          "to": {
+            "$ref": "#/components/schemas/To"
+          },
+          "transactionHash": {
+            "$ref": "#/components/schemas/TransactionHash"
+          },
+          "transactionIndex": {
+            "$ref": "#/components/schemas/TransactionIndex"
+          },
+          "postTransactionState": {
+            "title": "ReceiptPostTransactionState",
+            "description": "The intermediate stateRoot directly after transaction execution.",
+            "$ref": "#/components/schemas/Keccak"
+          },
+          "status": {
+            "title": "ReceiptStatus",
+            "description": "Whether or not the transaction threw an error.",
+            "type": "boolean"
+          }
+        }
+      },
+      "BloomFilter": {
+        "title": "bloomFilter",
+        "type": "string",
+        "description": "A 2048 bit bloom filter from the logs of the transaction. Each log sets 3 bits though taking the low-order 11 bits of each of the first three pairs of bytes in a Keccak 256 hash of the log's byte series"
+      },
+      "Log": {
+        "title": "log",
+        "type": "object",
+        "description": "An indexed event generated during a transaction",
+        "properties": {
+          "address": {
+            "title": "LogAddress",
+            "description": "Sender of the transaction",
+            "$ref": "#/components/schemas/Address"
+          },
+          "blockHash": {
+            "$ref": "#/components/schemas/BlockHash"
+          },
+          "blockNumber": {
+            "$ref": "#/components/schemas/BlockNumber"
+          },
+          "data": {
+            "title": "LogData",
+            "description": "The data/input string sent along with the transaction",
+            "$ref": "#/components/schemas/Bytes"
+          },
+          "logIndex": {
+            "title": "LogIndex",
+            "description": "The index of the event within its transaction, null when its pending",
+            "$ref": "#/components/schemas/Integer"
+          },
+          "removed": {
+            "title": "logIsRemoved",
+            "description": "Whether or not the log was orphaned off the main chain",
+            "type": "boolean"
+          },
+          "topics": {
+            "$ref": "#/components/schemas/Topics"
+          },
+          "transactionHash": {
+            "$ref": "#/components/schemas/TransactionHash"
+          },
+          "transactionIndex": {
+            "$ref": "#/components/schemas/TransactionIndex"
+          }
+        }
+      },
+      "Topics": {
+        "title": "LogTopics",
+        "description": "Topics are order-dependent. Each topic can also be an array of DATA with 'or' options.",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Topic"
+        }
+      },
+      "Topic": {
+        "title": "topic",
+        "description": "32 Bytes DATA of indexed log arguments. (In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256))",
+        "$ref": "#/components/schemas/DataWord"
+      },
+      "TransactionIndex": {
+        "title": "transactionIndex",
+        "description": "The index of the transaction. null when its pending",
+        "$ref": "#/components/schemas/IntegerOrNull"
+      },
+      "BlockNumberOrNull": {
+        "title": "blockNumberOrNull",
+        "description": "The block number or null when its the pending block",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/BlockNumber"
+          },
+          {
+            "$ref": "#/components/schemas/Null"
+          }
+        ]
+      },
+      "BlockHashOrNull": {
+        "title": "blockHashOrNull",
+        "description": "The block hash or null when its the pending block",
+        "$ref": "#/components/schemas/KeccakOrPending"
+      },
+      "NonceOrNull": {
+        "title": "nonceOrNull",
+        "description": "Randomly selected number to satisfy the proof-of-work or null when its the pending block",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Nonce"
+          },
+          {
+            "$ref": "#/components/schemas/Null"
+          }
+        ]
+      },
+      "From": {
+        "title": "From",
+        "description": "The sender of the transaction",
+        "$ref": "#/components/schemas/Address"
+      },
+      "To": {
+        "title": "To",
+        "description": "Destination address of the transaction. Null if it was a contract create.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Address"
+          },
+          {
+            "$ref": "#/components/schemas/Null"
+          }
+        ]
+      },
+      "Block": {
+        "title": "Block",
+        "description": "The Block is the collection of relevant pieces of information (known as the block header), together with information corresponding to the comprised transactions, and a set of other block headers that are known to have a parent equal to the present block’s parent’s parent.",
+        "type": "object",
+        "properties": {
+          "number": {
+            "$ref": "#/components/schemas/BlockNumberOrNull"
+          },
+          "hash": {
+            "$ref": "#/components/schemas/BlockHashOrNull"
+          },
+          "parentHash": {
+            "$ref": "#/components/schemas/BlockHash"
+          },
+          "nonce": {
+            "$ref": "#/components/schemas/NonceOrNull"
+          },
+          "sha3Uncles": {
+            "title": "blockShaUncles",
+            "description": "Keccak hash of the uncles data in the block",
+            "$ref": "#/components/schemas/Keccak"
+          },
+          "logsBloom": {
+            "title": "blockLogsBloom",
+            "type": "string",
+            "description": "The bloom filter for the logs of the block or null when its the pending block",
+            "pattern": "^0x[a-fA-F\\d]+$"
+          },
+          "transactionsRoot": {
+            "title": "blockTransactionsRoot",
+            "description": "The root of the transactions trie of the block.",
+            "$ref": "#/components/schemas/Keccak"
+          },
+          "stateRoot": {
+            "title": "blockStateRoot",
+            "description": "The root of the final state trie of the block",
+            "$ref": "#/components/schemas/Keccak"
+          },
+          "receiptsRoot": {
+            "title": "blockReceiptsRoot",
+            "description": "The root of the receipts trie of the block",
+            "$ref": "#/components/schemas/Keccak"
+          },
+          "miner": {
+            "$ref": "#/components/schemas/AddressOrNull"
+          },
+          "difficulty": {
+            "title": "blockDifficulty",
+            "type": "string",
+            "description": "Integer of the difficulty for this block"
+          },
+          "totalDifficulty": {
+            "title": "blockTotalDifficulty",
+            "description": "Integer of the total difficulty of the chain until this block",
+            "$ref": "#/components/schemas/IntegerOrNull"
+          },
+          "extraData": {
+            "title": "blockExtraData",
+            "type": "string",
+            "description": "The 'extra data' field of this block"
+          },
+          "size": {
+            "title": "blockSize",
+            "type": "string",
+            "description": "Integer the size of this block in bytes"
+          },
+          "gasLimit": {
+            "title": "blockGasLimit",
+            "type": "string",
+            "description": "The maximum gas allowed in this block"
+          },
+          "gasUsed": {
+            "title": "blockGasUsed",
+            "type": "string",
+            "description": "The total used gas by all transactions in this block"
+          },
+          "timestamp": {
+            "title": "blockTimeStamp",
+            "type": "string",
+            "description": "The unix timestamp for when the block was collated"
+          },
+          "transactions": {
+            "title": "transactionsOrHashes",
+            "description": "Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter",
+            "type": "array",
+            "items": {
+              "title": "transactionOrTransactionHash",
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Transaction"
+                },
+                {
+                  "$ref": "#/components/schemas/TransactionHash"
+                }
+              ]
+            }
+          },
+          "uncles": {
+            "title": "uncleHashes",
+            "description": "Array of uncle hashes",
+            "type": "array",
+            "items": {
+              "title": "uncleHash",
+              "description": "Block hash of the RLP encoding of an uncle block",
+              "$ref": "#/components/schemas/Keccak"
+            }
+          }
+        }
+      },
+      "SignTransaction": {
+        "title": "signTransaction",
+        "type": "object",
+        "required": [
+          "data",
+          "from",
+          "gas",
+          "gasPrice",
+          "to",
+          "value"
+        ],
+        "properties": {
+          "data": {
+            "type": "string"
+          },
+          "from": {
+            "$ref": "#/components/schemas/From"
+          },
+          "gas": {
+            "title": "transactionGas",
+            "type": "string",
+            "description": "The gas limit provided by the sender in Wei"
+          },
+          "gasPrice": {
+            "title": "transactionGasPrice",
+            "type": "string",
+            "description": "The gas price willing to be paid by the sender in Wei"
+          },
+          "to": {
+            "$ref": "#/components/schemas/To"
+          },
+          "value": {
+            "title": "transactionValue",
+            "description": "Value of Ether being transferred in Wei",
+            "$ref": "#/components/schemas/Keccak"
+          }
+        }
+      },
+      "Transaction": {
+        "title": "transaction",
+        "type": "object",
+        "required": [
+          "gas",
+          "gasPrice",
+          "nonce"
+        ],
+        "properties": {
+          "blockHash": {
+            "$ref": "#/components/schemas/BlockHashOrNull"
+          },
+          "blockNumber": {
+            "$ref": "#/components/schemas/BlockNumberOrNull"
+          },
+          "from": {
+            "$ref": "#/components/schemas/From"
+          },
+          "gas": {
+            "title": "transactionGas",
+            "type": "string",
+            "description": "The gas limit provided by the sender in Wei"
+          },
+          "gasPrice": {
+            "title": "transactionGasPrice",
+            "type": "string",
+            "description": "The gas price willing to be paid by the sender in Wei"
+          },
+          "hash": {
+            "$ref": "#/components/schemas/TransactionHash"
+          },
+          "input": {
+            "title": "transactionInput",
+            "type": "string",
+            "description": "The data field sent with the transaction"
+          },
+          "nonce": {
+            "title": "transactionNonce",
+            "description": "The total number of prior transactions made by the sender",
+            "$ref": "#/components/schemas/Nonce"
+          },
+          "to": {
+            "$ref": "#/components/schemas/To"
+          },
+          "transactionIndex": {
+            "$ref": "#/components/schemas/TransactionIndex"
+          },
+          "value": {
+            "title": "transactionValue",
+            "description": "Value of Ether being transferred in Wei",
+            "$ref": "#/components/schemas/Keccak"
+          },
+          "v": {
+            "title": "transactionSigV",
+            "type": "string",
+            "description": "ECDSA recovery id"
+          },
+          "r": {
+            "title": "transactionSigR",
+            "type": "string",
+            "description": "ECDSA signature r"
+          },
+          "s": {
+            "title": "transactionSigS",
+            "type": "string",
+            "description": "ECDSA signature s"
+          }
+        }
+      },
+      "Transactions": {
+        "title": "transactions",
+        "description": "An array of transactions",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Transaction"
+        }
+      },
+      "TransactionHash": {
+        "title": "transactionHash",
+        "type": "string",
+        "description": "Keccak 256 Hash of the RLP encoding of a transaction",
+        "$ref": "#/components/schemas/Keccak"
+      },
+      "KeccakOrPending": {
+        "title": "keccakOrPending",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Keccak"
+          },
+          {
+            "$ref": "#/components/schemas/Null"
+          }
+        ]
+      },
+      "Keccak": {
+        "title": "keccak",
+        "type": "string",
+        "description": "Hex representation of a Keccak 256 hash",
+        "pattern": "^0x[a-fA-F\\d]{64}$"
+      },
+      "Nonce": {
+        "title": "nonce",
+        "description": "A number only to be used once",
+        "$ref": "#/components/schemas/Integer"
+      },
+      "Null": {
+        "title": "null",
+        "type": "null",
+        "description": "Null"
+      },
+      "Integer": {
+        "title": "integer",
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]+$",
+        "description": "Hex representation of the integer"
+      },
+      "TxID": {
+        "title": "txID",
+        "type": "string"
+      },
+      "StartTime": {
+        "description": "is the Unix time when the validator starts validating the Subnet.",
+        "type": "number"
+      },
+      "EndTime": {
+        "description": "is the Unix time when the validator stops validating the Subnet.",
+        "type": "number"
+      },
+      "StakeAmount": {
+        "description": "is the amount of nAVAX this validator staked. Omitted if subnetID is not the Primary Network",
+        "type": "number"
+      },
+      "Encoding": {
+        "name": "encoding",
+        "description": "specifies the format for the returned UTXOs. Can be either \"cb58\" or \"hex\" and defaults to \"cb58\".",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "NodeID": {
+        "description": "is the validator’s node ID.",
+        "type": "string"
+      },
+      "Address": {
+        "title": "address",
+        "type": "string",
+        "pattern": "^0x[a-fA-F\\d]{40}$"
+      },
+      "XAddress": {
+        "title": "address",
+        "type": "string",
+        "pattern": "^X-[a-fA-F\\d]{43}$"
+      },
+      "XAddresses": {
+        "title": "addresses",
+        "type": "array",
+        "description": "List of contract addresses from which to monitor events",
+        "items": {
+          "$ref": "#/components/schemas/XAddress"
+        }
+      },
+      "PAddress": {
+        "title": "address",
+        "type": "string",
+        "pattern": "^P-[a-fA-F\\d]{43}$"
+      },
+      "PAddresses": {
+        "title": "addresses",
+        "type": "array",
+        "description": "List of contract addresses from which to monitor events",
+        "items": {
+          "$ref": "#/components/schemas/PAddress"
+        }
+      },
+      "Addresses": {
+        "title": "addresses",
+        "type": "array",
+        "description": "List of contract addresses from which to monitor events",
+        "items": {
+          "$ref": "#/components/schemas/Address"
+        }
+      },
+      "Position": {
+        "title": "position",
+        "type": "string",
+        "description": "Hex representation of the storage slot where the variable exists",
+        "pattern": "^0x([a-fA-F0-9]?)+$"
+      },
+      "DataWord": {
+        "title": "dataWord",
+        "type": "string",
+        "description": "Hex representation of a 256 bit unit of data",
+        "pattern": "^0x([a-fA-F\\d]{64})?$"
+      },
+      "Bytes": {
+        "title": "bytes",
+        "type": "string",
+        "description": "Hex representation of a variable length byte array",
+        "pattern": "^0x([a-fA-F0-9]?)+$"
+      }
+    },
+    "contentDescriptors": {
+      "Block": {
+        "name": "block",
+        "summary": "A block",
+        "description": "A block object",
+        "schema": {
+          "$ref": "#/components/schemas/Block"
+        }
+      },
+      "Null": {
+        "name": "Null",
+        "description": "JSON Null value",
+        "summary": "Null value",
+        "schema": {
+          "$ref": "#/components/schemas/Null"
+        }
+      },
+      "Signature": {
+        "name": "signature",
+        "summary": "The signature.",
+        "required": true,
+        "schema": {
+          "title": "signatureBytes",
+          "type": "string",
+          "description": "Hex representation of byte array between 2 and 65 chars long",
+          "pattern": "0x^([A-Fa-f0-9]{2}){65}$"
+        }
+      },
+      "GasPrice": {
+        "name": "gasPrice",
+        "required": true,
+        "schema": {
+          "title": "gasPriceResult",
+          "description": "Integer of the current gas price",
+          "$ref": "#/components/schemas/Integer"
+        }
+      },
+      "Transaction": {
+        "required": true,
+        "name": "transaction",
+        "schema": {
+          "$ref": "#/components/schemas/Transaction"
+        }
+      },
+      "TransactionResult": {
+        "name": "transactionResult",
+        "description": "Returns a transaction or null",
+        "schema": {
+          "title": "TransactionOrNull",
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/Transaction"
+            },
+            {
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      },
+      "UncleCountResult": {
+        "name": "uncleCountResult",
+        "description": "The Number of total uncles in the given block",
+        "schema": {
+          "$ref": "#/components/schemas/IntegerOrNull"
+        }
+      },
+      "Message": {
+        "name": "message",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/Bytes"
+        }
+      },
+      "Filter": {
+        "name": "filter",
+        "required": true,
+        "schema": {
+          "title": "filter",
+          "type": "object",
+          "description": "A filter used to monitor the blockchain for log/events",
+          "properties": {
+            "fromBlock": {
+              "$ref": "#/components/schemas/BlockNumber"
+            },
+            "toBlock": {
+              "$ref": "#/components/schemas/BlockNumber"
+            },
+            "address": {
+              "title": "oneOrArrayOfAddresses",
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Address"
+                },
+                {
+                  "$ref": "#/components/schemas/Addresses"
+                }
+              ]
+            },
+            "topics": {
+              "$ref": "#/components/schemas/Topics"
+            }
+          }
+        }
+      },
+      "Address": {
+        "name": "address",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/Address"
+        }
+      },
+      "BlockHash": {
+        "name": "blockHash",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/BlockHash"
+        }
+      },
+      "Nonce": {
+        "name": "nonce",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/Nonce"
+        }
+      },
+      "Position": {
+        "name": "key",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/Position"
+        }
+      },
+      "Logs": {
+        "name": "logs",
+        "description": "An array of all logs matching filter with given id.",
+        "schema": {
+          "title": "setOfLogs",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Log"
+          }
+        }
+      },
+      "FilterId": {
+        "name": "filterId",
+        "schema": {
+          "$ref": "#/components/schemas/FilterId"
+        }
+      },
+      "BlockNumber": {
+        "name": "blockNumber",
+        "required": true,
+        "schema": {
+          "title": "blockNumberOrTag",
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/BlockNumber"
+            },
+            {
+              "$ref": "#/components/schemas/BlockNumberTag"
+            }
+          ]
+        }
+      },
+      "TransactionHash": {
+        "name": "transactionHash",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/TransactionHash"
+        }
+      }
+    }
+  }
+}
