@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/avalanche-json-rpc-specification",
+  pathPrefix: "/Avalanche-json-rpc-specification",
   siteMetadata: {
     title: 'Avalanche JSON-RPC',
     description: 'This API lets you interact with an Avalanche client via JSON-RPCn/ Use method tag to complete the url ex: https://api.avax.network/ext/vm/avm',
