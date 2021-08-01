@@ -1,6 +1,6 @@
 {
     "openrpcDocument": "openrpc.json",
-    "outDir": "./",
+    "outDir": "./build",
     "components": [
         {
             "type": "client",
@@ -14,7 +14,7 @@
         },
         {
             "type": "docs",
-            "name": "avalanche-json-rpc-specification-website",
+            "name": "avalanche-json-rpc-specification",
             "language": "gatsby"
         }
     ]

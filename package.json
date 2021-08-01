@@ -1,7 +1,7 @@
 {
   "name": "avalanche-json-rpc-specification",
   "version": "0.0.4",
-  "description": "Package containing tools to produce generated artifacts for the ethereum OpenRPC document. Please see the git repository for more information",
+  "description": "Package containing tools to produce generated artifacts for the Avalanche OpenRPC document. Please see the git repository for more information",
   "scripts": {
     "generate-clients": "open-rpc-generator generate -c open-rpc-generator-config.json",
     "clean": "rm -rf build && mkdir -p build",
