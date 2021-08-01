@@ -6,7 +6,7 @@
 
 This repository is the home of the Avalanche [OpenRPC](https://spec.open-rpc.org) document that describes the JSON-RPC interface with every  methods supportedby public node ``https://api.avax.network/``
 
-⚠ How some methods have different URL paths you need to combine the tag with serve URL, the eth methods have tags ``/bc/C/rpc`` is path is https://api.avax.network/ext/bc/P
+⚠ How some methods have different URL paths you need to combine the tag of method with serve URL, the eth methods have tags ``/bc/C/rpc`` is path is https://api.avax.network/ext/bc/P
 
 
 ## Specification
