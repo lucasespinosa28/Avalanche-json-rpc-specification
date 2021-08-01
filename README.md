@@ -1,21 +1,13 @@
-# bsc-json-rpc-specification
- 
-# Hyperledger-Besu-json-rpc-specification
+# Avalanche-json-rpc-specification
 
 [View the Documentation](https://lucasespinosa28.github.io/Avalanche-json-rpc-specification/api-documentation/.
 
 ## Overview
 
-This repository is the home of the AvalancheOpenRPC](https://spec.open-rpc.org) document that describes the JSON-RPC basic interface to be implemented by client developers. It contains the tooling and scripts to automate producing artifacts for consuming the JSON-RPC API (docs, clients, etc).
+This repository is the home of the Avalanche [OpenRPC](https://spec.open-rpc.org) document that describes the JSON-RPC interface with every  methods supportedby public node ``https://api.avax.network/``
 
-## Fullnode⚠
-To use the documentation you need to run a full node
+⚠ How some methods have different URL paths you need to combine the tag with serve URL, the eth methods have tags ``/bc/C/rpc`` is path is https://api.avax.network/ext/bc/P
 
-This command will run a full node com basic methods enabled
-``docker run  -p 8545:8545 hyperledger/besu:latest --rpc-http-cors-origins=* --rpc-http-enabled=true --network=dev  ``
-
-You want to use method PRIV you'll need to the enable private transaction in your node
-[Documentation to enable privacy](https://besu.hyperledger.org/en/stable/Reference/CLI/CLI-Syntax/#privacy-enabled)
 
 ## Specification
 
